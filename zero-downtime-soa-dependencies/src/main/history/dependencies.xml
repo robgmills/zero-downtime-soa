@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="zero-downtime-soa-dependencies-1.0-SNAPSHOT">
+    <feature>
+        <feature>camel-blueprint</feature>
+        <feature>camel-core</feature>
+        <feature>camel-jetty</feature>
+        <feature>camel-kafka</feature>
+        <feature>cellar</feature>
+        <feature>cellar-eventadmin</feature>
+        <feature>cellar-webconsole</feature>
+    </feature>
+</features>

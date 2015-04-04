@@ -9,9 +9,10 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>groupId</groupId>
+	<groupId>zero.downtime.soa</groupId>
 	<artifactId>hello-service-api</artifactId>
 	<version>1.0-SNAPSHOT</version>
+	<name>Hello Service REST API</name>
 	<description>Hello Service API using Rest DSL</description>
 
 	<dependencies>
