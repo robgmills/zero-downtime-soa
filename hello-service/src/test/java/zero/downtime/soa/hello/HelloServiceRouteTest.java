@@ -21,7 +21,7 @@ public class HelloServiceRouteTest extends CamelTestSupport {
 	public void testHelloRoute() throws Exception {
 		context.getRouteDefinition("HelloService").adviceWith(context, new AdviceWithRouteBuilder() {
 			@Override public void configure() throws Exception {
-				weaveAddFirst().setBody(constant("Rob"));
+				weaveAddFirst().setHeader("user", constant("Rob"));
 				weaveAddLast().to(resultEndpoint);
 			}
 		});
