@@ -1,4 +1,4 @@
-package zero.down.time.soa.api;
+package zero.downtime.soa.api;
 
 import org.apache.camel.builder.RouteBuilder;
 
