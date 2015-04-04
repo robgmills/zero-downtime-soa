@@ -7,6 +7,7 @@
 			 description="Karaf Zero Downtime Features"
 			 version="${project.version}">
 		<feature>camel-core</feature>
+		<feature>camel-blueprint</feature>
 		<feature>camel-jetty</feature>
 		<feature>camel-kafka</feature>
 		<feature>cellar</feature>
