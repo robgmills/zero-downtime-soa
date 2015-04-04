@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<prerequisites>
+		<maven>3.2.2</maven>
+	</prerequisites>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>zero.downtime.soa</groupId>
+	<artifactId>zero-downtime-soa</artifactId>
+	<packaging>pom</packaging>
+	<version>0.1-SNAPSHOT</version>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<camel.version>2.15.0</camel.version>
+		<junit.version>4.11</junit.version>
+		<slf4j.version>1.7.7</slf4j.version>
+		<log4j.legacy.version>1.2.17</log4j.legacy.version>
+		<osgi.version>5.0.0</osgi.version>
+		<jetty.version>8.1.15.v20140411</jetty.version>
+		<mockito.version>1.9.5</mockito.version>
+		<hamcrest.version>1.3</hamcrest.version>
+		<karaf.version>3.0.3</karaf.version>
+		<surefire.failsafe.version>2.17</surefire.failsafe.version>
+	</properties>
+	<name>Zero Downtime SOA</name>
+	<url>https://github.com/robgmills/zero-downtime-soa</url>
+
+	<scm>
+		<connection>scm:git:ssh://git@github.com:robgmills/zero-downtime-soa.git</connection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<modules>
+		<module>hello-service</module>
+	</modules>
+
+	<developers>
+		<developer>
+			<id>magonzalez</id>
+			<name>Mariano Gonzalez</name>
+			<email>mariano.gonzalez@ahold.com</email>
+			<organization>Peapod WebCenter</organization>
+			<roles>
+				<role>Senior Software Engineer</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>rmills</id>
+			<name>Rob Mills</name>
+			<email>rmills@ahold.com</email>
+			<organization>Peapod WebCenter</organization>
+			<roles>
+				<role>Technical Architect</role>
+				<role>Manager</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<inceptionYear>2015</inceptionYear>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/robgmills/zero-downtime-soa/issues</url>
+	</issueManagement>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- OSGi R5 -->
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.core</artifactId>
+				<version>${osgi.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.compendium</artifactId>
+				<version>${osgi.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Camel Dependencies -->
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-core</artifactId>
+				<version>${camel.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-jetty</artifactId>
+				<version>${camel.version}</version>
+			</dependency>
+
+			<!-- Test Dependencies -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<!-- Alternative OSGi-ready version of JUnit -->
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.junit</artifactId>
+				<version>4.11_2</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-test</artifactId>
+				<version>${camel.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-test-blueprint</artifactId>
+				<version>${camel.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-test-spring</artifactId>
+				<version>${camel.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>${mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>${hamcrest.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<finalName>${project.artifactId}</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<inherited>true</inherited>
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<!-- TODO: upgrade to 1.8 once dependencies are ready -->
+						<source>1.7</source>
+						<target>1.7</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${surefire.failsafe.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${surefire.failsafe.version}</version>
+					<executions>
+						<execution>
+							<id>integration-test</id>
+							<goals>
+								<goal>integration-test</goal>
+								<goal>verify</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.6</version>
+					<inherited>true</inherited>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>maven-bundle-plugin</artifactId>
+					<version>2.5.3</version>
+					<extensions>true</extensions>
+					<inherited>true</inherited>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.karaf.tooling</groupId>
+					<artifactId>karaf-maven-plugin</artifactId>
+					<version>${karaf.version}</version>
+					<extensions>true</extensions>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.4</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>test-jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>
