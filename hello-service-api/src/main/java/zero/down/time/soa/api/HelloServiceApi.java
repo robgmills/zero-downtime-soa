@@ -1,6 +1,7 @@
 package zero.down.time.soa.api;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.eclipse.jetty.server.Server;
 
 /**
  * @author magonzal
@@ -10,15 +11,22 @@ public class HelloServiceApi extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
+
 		//@formatter:off
 		restConfiguration().component("jetty")
 			.host("localhost")
-			.port(8080)
+			.port(getRandomServerPort())
 			.contextPath("hello-service-api/rest");
 
 		rest("/{user}").description("Say hello to User")
 			.get().route().to("direct-vm:hello");
 		//@formatter:on
+	}
+
+	private int getRandomServerPort() throws Exception {
+		Server server = new Server(0);
+		server.start();
+		return server.getConnectors()[0].getLocalPort();
 	}
 }
 
