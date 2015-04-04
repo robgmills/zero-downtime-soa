@@ -11,7 +11,7 @@
 	<groupId>zero.downtime.soa</groupId>
 	<artifactId>zero-downtime-soa</artifactId>
 	<packaging>pom</packaging>
-	<version>0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.7</maven.compiler.source>

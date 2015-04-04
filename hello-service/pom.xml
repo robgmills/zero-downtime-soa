@@ -7,7 +7,7 @@
 
 	<artifactId>hello-service</artifactId>
 	<groupId>zero.downtime.soa</groupId>
-	<version>0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>bundle</packaging>
 	<name>Hello Service</name>
 	<description>Basic OSGi service bundle to echo a message to the caller.</description>
@@ -15,7 +15,7 @@
 	<parent>
 		<artifactId>zero-downtime-soa</artifactId>
 		<groupId>zero.downtime.soa</groupId>
-		<version>0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 
 	<scm>
