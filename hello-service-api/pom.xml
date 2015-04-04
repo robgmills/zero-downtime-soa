@@ -9,11 +9,10 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>zero.downtime.soa</groupId>
 	<artifactId>hello-service-api</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>Hello Service REST API</name>
-	<description>Hello Service API using Rest DSL</description>
+	<description>Rest DSL API using jetty</description>
 
 	<dependencies>
 		<dependency>
@@ -25,5 +24,14 @@
 			<artifactId>camel-jetty</artifactId>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
