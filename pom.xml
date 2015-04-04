@@ -16,12 +16,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
-		<camel.version>2.15.0</camel.version>
+		<camel.version>2.15.1</camel.version>
 		<junit.version>4.11</junit.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<log4j.legacy.version>1.2.17</log4j.legacy.version>
 		<osgi.version>5.0.0</osgi.version>
-		<jetty.version>8.1.15.v20140411</jetty.version>
 		<mockito.version>1.9.5</mockito.version>
 		<hamcrest.version>1.3</hamcrest.version>
 		<karaf.version>3.0.3</karaf.version>
@@ -37,27 +36,16 @@
 
 	<modules>
 		<module>hello-service</module>
+		<module>hello-service-api</module>
+		<module>zero-downtime-soa-dependencies</module>
 	</modules>
 
 	<developers>
 		<developer>
-			<id>magonzalez</id>
 			<name>Mariano Gonzalez</name>
-			<email>mariano.gonzalez@ahold.com</email>
-			<organization>Peapod WebCenter</organization>
-			<roles>
-				<role>Senior Software Engineer</role>
-			</roles>
 		</developer>
 		<developer>
-			<id>rmills</id>
 			<name>Rob Mills</name>
-			<email>rmills@ahold.com</email>
-			<organization>Peapod WebCenter</organization>
-			<roles>
-				<role>Technical Architect</role>
-				<role>Manager</role>
-			</roles>
 		</developer>
 	</developers>
 
@@ -156,7 +144,6 @@
 					<inherited>true</inherited>
 					<configuration>
 						<encoding>UTF-8</encoding>
-						<!-- TODO: upgrade to 1.8 once dependencies are ready -->
 						<source>1.7</source>
 						<target>1.7</target>
 					</configuration>
