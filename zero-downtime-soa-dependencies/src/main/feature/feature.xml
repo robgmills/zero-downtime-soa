@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+	<repository>mvn:org.apache.camel.karaf/apache-camel/2.15.1/xml/features</repository>
+	<repository>mvn:org.apache.karaf.cellar/apache-karaf-cellar/3.0.2/xml/features</repository>
+
+	<feature name="zero-downtime-features"
+			 description="Karaf Zero Downtime Features"
+			 version="${project.version}">
+		<feature>camel-core</feature>
+		<feature>camel-jetty</feature>
+		<feature>camel-kafka</feature>
+		<feature>cellar</feature>
+		<feature>cellar-eventadmin</feature>
+		<feature>cellar-webconsole</feature>
+	</feature>
+
+</features>
