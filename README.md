@@ -57,7 +57,7 @@ the slaves.  It's a good way to spin up new instances in real-time to add capaci
 needing to re-install everything.
 
 ### Step 2 - Copy the Cellar config into the root Karaf instance
-`cp config/karaf/org.apache.karaf.cellar.node.cfg $KARAF_HOME/etc/`
+`cp config/karaf/org.apache.karaf.cellar.node.cfg opt/karaf/etc/`
 
 The config contained in this project enables the bundle, config,
 and feature listeners that are responsible for replicating changes 
