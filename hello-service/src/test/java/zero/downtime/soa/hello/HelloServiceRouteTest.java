@@ -29,7 +29,7 @@ public class HelloServiceRouteTest extends CamelTestSupport {
 		context.start();
 
 		resultEndpoint.expectedMessageCount(1);
-		resultEndpoint.expectedBodiesReceived("Hello Rob!");
+		resultEndpoint.expectedBodiesReceived("Hello Rob! \n");
 
 		template.sendBodyAndHeaders( "direct-vm:hello", "Rob", null );
 		assertMockEndpointsSatisfied();

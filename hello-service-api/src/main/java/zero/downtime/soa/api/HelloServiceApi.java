@@ -11,15 +11,14 @@ public class HelloServiceApi extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-
 		//@formatter:off
 		restConfiguration().component("jetty")
 			.host("localhost")
-			.port(getRandomServerPort())
-			.contextPath("hello-service-api/rest");
+			.port(getRandomServerPort());
 
-		rest("/{user}").description("Say hello to User")
-			.get().route().to("direct-vm:hello");
+		rest("/rest-api")
+			.get("/sync/{user}").to("direct-vm:hello")
+			.get("/async/{user}").to("direct-vm:hello");
 		//@formatter:on
 	}
 

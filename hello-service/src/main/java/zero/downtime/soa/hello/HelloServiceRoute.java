@@ -17,7 +17,7 @@ public class HelloServiceRoute extends RouteBuilder {
 	public void configure() throws Exception {
 		from("direct-vm:hello").id("HelloService")
 				.log(LoggingLevel.INFO, ":::: Hello ${header.user}! ::::")
-				.setBody( simple("Hello ${header.user}!") )
+				.setBody( simple("Hello ${header.user}! \\n") )
 		.end();
 	}
 
