@@ -4,8 +4,11 @@ import org.apache.camel.builder.RouteBuilder;
 import org.eclipse.jetty.server.Server;
 
 /**
- * @author magonzal
- * @version 1.0.0
+ * Rest DSL uysing the jetty component to expose the Hello Service Add javadocAPI
+ *
+ * @author Mariano Gonzalez
+ * @version 1.0
+ * @since 1.0
  */
 public class HelloServiceApi extends RouteBuilder {
 
