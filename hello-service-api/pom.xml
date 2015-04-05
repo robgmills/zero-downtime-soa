@@ -11,10 +11,15 @@
 
 	<artifactId>hello-service-api</artifactId>
 	<version>1.0.0</version>
-	<name>Hello Service REST API</name>
-	<description>Rest DSL API using jetty</description>
+	<packaging>bundle</packaging>
+	<name>Hello Service API</name>
+	<description>Bundle containing the Rest DSL API using the Jetty component</description>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-core</artifactId>
