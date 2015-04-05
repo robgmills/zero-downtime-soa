@@ -23,7 +23,16 @@ public class HelloServiceApi extends RouteBuilder {
 		//@formatter:on
 	}
 
-	private int getRandomServerPort() throws Exception {
+	/**
+	 * Looks up an available port number on the host
+	 * by creating a dummy Jetty Server.
+	 *
+	 * TODO: there's probably a better way to do this
+	 *
+	 * @return a port number available for use
+	 * @throws Exception
+	 */
+	protected int getRandomServerPort() throws Exception {
 		Server server = new Server(0);
 		server.start();
 		int port = server.getConnectors()[0].getLocalPort();
