@@ -35,7 +35,7 @@ Check the Karaf log for which port it started on.  You should see a message simi
 In this case, the Jetty server started on port 59953.  Simply make an HTTP GET request to the API
  endpoint:
 
-`curl -XGET localhost:59953/hello-service-api/rest/John`
+`curl -XGET localhost:59953/rest-api/sync/John`
 
 And you should get back a personalized message.
 
@@ -57,7 +57,7 @@ the slaves.  It's a good way to spin up new instances in real-time to add capaci
 needing to re-install everything.
 
 ### Step 2 - Copy the Cellar config into the root Karaf instance
-`cp config/karaf/org.apache.karaf.cellar.node.cfg opt/karaf/etc/`
+`cp config/karaf/org.apache.karaf.cellar.node.cfg $KARAF_HOME/etc/`
 
 The config contained in this project enables the bundle, config,
 and feature listeners that are responsible for replicating changes 
