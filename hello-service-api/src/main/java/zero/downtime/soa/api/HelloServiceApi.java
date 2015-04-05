@@ -26,7 +26,9 @@ public class HelloServiceApi extends RouteBuilder {
 	private int getRandomServerPort() throws Exception {
 		Server server = new Server(0);
 		server.start();
-		return server.getConnectors()[0].getLocalPort();
+		int port = server.getConnectors()[0].getLocalPort();
+		server.stop();
+		return port;
 	}
 }
 
