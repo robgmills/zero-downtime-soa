@@ -1,7 +1,8 @@
-# zero-downtime-soa
+# Zero Downtime OSGi Micro-services 
 
-## Quick Start
-### Step 0 - Get the dependencies
+## Guide
+### Basic OSGi Micro-services
+#### Step 0 - Get the dependencies
 Simply execute the `bootstrap.sh` script to download and install all the
 necessary dependencies including:
 
@@ -10,23 +11,23 @@ necessary dependencies including:
 
 Dependencies are downloaded to an `opt/` directory in the project root.
 
-### Step 1 - Build the project
+#### Step 1 - Build the project
 `mvn clean package`
 
-### Step 2 - Install the Karaf dependencies
+#### Step 2 - Install the Karaf dependencies
 `cp zero-downtime-soa-dependencies/target/zero-downtime-soa-dependencies.kar opt/karaf/deploy/`
 
 This step pre-installs the necessary Karaf bundles for Cellar, Camel, Hazelcast, and Kafka 
 required by the bundles.
 
-### Step 3 - Install the API and Service bundles
+#### Step 3 - Install the API and Service bundles
 `cp hello-service-api/target/hello-service-api.jar opt/karaf/deploy/`
 `cp hello-service/target/hello-service.jar opt/karaf/deploy/`
 
-### Step 4 - Start Karaf
+#### Step 4 - Start Karaf
 `opt/karaf/bin/karaf`
 
-### Step 5 - Call the API
+#### Step 5 - Call the API
 When the API bundle starts, it finds an available port on the host to bind to the Jetty server to.
 Check the Karaf log for which port it started on.  You should see a message similar to this:
 
@@ -39,10 +40,8 @@ In this case, the Jetty server started on port 59953.  Simply make an HTTP GET r
 
 And you should get back a personalized message.
 
-## Distributed OSGi
-### Step 0 - Follow all the steps in the Quick Start
-
-### Step 1 - Create slave Karaf instances from the main Karaf instance
+### Distributed OSGi
+#### Step 0 - Create slave Karaf instances from the main Karaf instance
 From the Karaf console:
 ````
 instance:clone root slave-0
@@ -68,6 +67,22 @@ bundle.listener = true
 config.listener = true
 feature.listener = true
 ````
+
+### Decoupled & Distributed Routes
+#### Step 0 - Start Zookeeper and Kafka
+There are helpful scripts in the root of the project to start both a basic, single node 
+Zookeeper instance and a 2-node Kafka cluster:
+
+````
+./0-start-zookeeper.sh
+./1-start-kafka-1.sh
+./1-start-kafka-2.sh
+````
+
+Please note, it's important to start Zookeeper first as Kafka is heavily dependent on it.
+
+#### Step 1 - Call the Kafka-backed API
+`curl -XGET localhost:59953/rest-api/async/Mary`
 
 ## Documentation
 ### Karaf

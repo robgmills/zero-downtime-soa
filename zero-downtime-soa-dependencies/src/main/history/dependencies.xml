@@ -8,5 +8,9 @@
         <feature>cellar</feature>
         <feature>cellar-eventadmin</feature>
         <feature>cellar-webconsole</feature>
+        <feature>zkclient</feature>
+        <feature>zookeeper</feature>
+        <bundle>mvn:com.101tec/zkclient/0.4</bundle>
+        <bundle>mvn:org.apache.zookeeper/zookeeper/3.3.3</bundle>
     </feature>
 </features>

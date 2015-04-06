@@ -21,7 +21,9 @@ public class HelloServiceApi extends RouteBuilder {
 
 		rest("/rest-api")
 			.get("/sync/{user}").to("direct-vm:hello")
-			.get("/async/{user}").to("direct-vm:hello");
+			.get("/async/{user}").route().transform(header("user"))
+			.to("kafka:localhost:9093,localhost:9094?topic=test&serializerClass=kafka.serializer.StringEncoder")
+			.setBody(simple("Thanks ${header.user} your messages is being processed. \\n"));
 		//@formatter:on
 	}
 

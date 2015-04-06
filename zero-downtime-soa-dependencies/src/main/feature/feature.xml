@@ -3,9 +3,23 @@
 	<repository>mvn:org.apache.camel.karaf/apache-camel/2.15.1/xml/features</repository>
 	<repository>mvn:org.apache.karaf.cellar/apache-karaf-cellar/3.0.2/xml/features</repository>
 
+	<feature name="zkclient"
+			 description="A zookeeper client, that makes life a little easier."
+			 version="0.4">
+		<bundle dependency="true">mvn:com.101tec/zkclient/0.4</bundle>
+	</feature>
+
+	<feature name="zookeeper"
+			 description="Apache ZooKeeper is an effort to develop and maintain an open-source server which enables highly reliable distributed coordination"
+			 version="[3.3.3,3.3.5)">
+		<bundle dependency="true">mvn:org.apache.zookeeper/zookeeper/3.3.3</bundle>
+	</feature>
+
 	<feature name="zero-downtime-features"
 			 description="Karaf Zero Downtime Features"
 			 version="${project.version}">
+		<feature>zookeeper</feature>
+		<feature>zkclient</feature>
 		<feature>camel-core</feature>
 		<feature>camel-blueprint</feature>
 		<feature>camel-jetty</feature>
