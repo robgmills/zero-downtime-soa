@@ -26,6 +26,8 @@
 		<karaf.version>3.0.3</karaf.version>
 		<surefire.failsafe.version>2.17</surefire.failsafe.version>
 		<scala.version>2.10.4</scala.version>
+		<zookeeper.version>3.4.0</zookeeper.version>
+		<zkclient.version>0.4</zkclient.version>
 	</properties>
 	<name>Zero Downtime SOA</name>
 	<url>https://github.com/robgmills/zero-downtime-soa</url>
@@ -107,12 +109,6 @@
 				</exclusions>
 			</dependency>
 
-			<dependency>
-				<groupId>org.apache.camel</groupId>
-				<artifactId>camel-scala</artifactId>
-				<version>${camel.version}</version>
-			</dependency>
-
 			<!-- Test Dependencies -->
 			<dependency>
 				<groupId>junit</groupId>
@@ -155,6 +151,38 @@
 				<groupId>org.hamcrest</groupId>
 				<artifactId>hamcrest-all</artifactId>
 				<version>${hamcrest.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-library</artifactId>
+				<version>${scala.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>${zookeeper.version}</version>
+				<scope>test</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>com.sun.jmx</groupId>
+						<artifactId>jmxri</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.sun.jdmk</groupId>
+						<artifactId>jmxtools</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.jms</groupId>
+						<artifactId>jms</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.101tec</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>${zkclient.version}</version>
 				<scope>test</scope>
 			</dependency>
 		</dependencies>

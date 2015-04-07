@@ -33,16 +33,42 @@
 			<artifactId>camel-kafka</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-scala</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-test-blueprint</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.101tec</groupId>
+			<artifactId>zkclient</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
