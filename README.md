@@ -58,7 +58,7 @@ _Cloning_ the root Karaf instance copies all the current configuration and deplo
 the slaves.  It's a good way to spin up new instances in real-time to add capacity without 
 needing to re-install everything.
 
-### Step 2 - Copy the Cellar config into the root Karaf instance
+### Step 1 - Copy the Cellar config into the root Karaf instance
 `cp config/karaf/org.apache.karaf.cellar.node.cfg opt/karaf/etc/`
 
 The config contained in this project enables the bundle, config,
