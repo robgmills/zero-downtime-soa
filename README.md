@@ -33,7 +33,7 @@ Check the Karaf log for which port it started on.  You should see a message simi
 
 > 2015-04-04 19:17:22,695 | INFO  | raf-3.0.3/deploy | AbstractConnector                | 82 - org.eclipse.jetty.aggregate.jetty-all-server - 8.1.15.v20140411 | Started SelectChannelConnector@0.0.0.0:<b>59953</b>
 
-Hint: If you can find the port, just execute the following command from the Karaf console:
+Hint: If you can't find the port, just execute the following command from the Karaf console:
 
 `log:tail | grep rest-api`
 
