@@ -13,18 +13,22 @@ import org.apache.camel.builder.RouteBuilder;
  */
 public class HelloServiceRoute extends RouteBuilder {
 
-	private static final String KAFKA_1 = "kafka:localhost:9093,localhost:9094?topic=test&zookeeperHost=localhost&zookeeperPort=2181&groupId=group1";
+	static final String KAFKA = "kafka:{{hello.kafkaCluster}}?topic={{hello.kafkaTopic}}&groupId={{hello.kafkaGroup}}&zookeeperHost={{hello.zookeeperHost}}&zookeeperPort={{hello.zookeeperPort}}";
 
 	@Override
 	public void configure() throws Exception {
 		//@formatter:off
-		from("direct-vm:hello").id("HelloServiceSync")
+		from("direct-vm:hello")
+				.id("HelloServiceSync")
 			.log(LoggingLevel.INFO, ":::: Hello ${header.user}! ::::")
-			.setBody(simple("Hello ${header.user}! \\n")).end();
+			.setBody(simple("Hello ${header.user}! \\n"))
+		.end();
 
-		from(KAFKA_1).id("HelloServiceAsync")
+		from(KAFKA)
+				.id("HelloServiceAsync")
 			.log(LoggingLevel.INFO, ":::: Hello ${body}! ::::")
-			.setBody(simple("Hello ${body}! \\n")).end();
+			.setBody(simple("Hello ${body}! \\n"))
+		.end();
 		//@formatter:off
 	}
 }

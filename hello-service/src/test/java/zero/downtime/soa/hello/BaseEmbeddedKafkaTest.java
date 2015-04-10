@@ -43,6 +43,8 @@ public class BaseEmbeddedKafkaTest extends CamelTestSupport {
 
 	private static volatile int kafkaPort;
 
+	private static volatile String kafkaCluster;
+
 	@BeforeClass
 	public static void beforeClass() {
 		// start from somewhere in the 23xxx range
@@ -55,6 +57,7 @@ public class BaseEmbeddedKafkaTest extends CamelTestSupport {
 		// -1 for any available port
 		kafkaPorts.add(kafkaPort);
 		embeddedKafkaCluster = new EmbeddedKafkaCluster(embeddedZookeeper.getConnection(), new Properties(), kafkaPorts);
+		kafkaCluster = HOST + ":" + kafkaPort;
 		try {
 			embeddedZookeeper.startup();
 		} catch (IOException e) {
@@ -77,10 +80,11 @@ public class BaseEmbeddedKafkaTest extends CamelTestSupport {
 
 		Properties prop = new Properties();
 		prop.setProperty("hello.zookeeperPort", "" + getZookeeperPort());
-		prop.setProperty("hello.zookeeperHost", HOST);
-		prop.setProperty("hello.kafkaCluster", HOST + ":" + getKafkaPort());
-		prop.setProperty("hello.kafkaTopic", TOPIC);
+		prop.setProperty("hello.zookeeperHost", getZookeeperHost());
+		prop.setProperty("hello.kafkaCluster", getKafkaCluster());
+		prop.setProperty("hello.kafkaTopic", getKafkaTopic());
 		prop.setProperty("hello.kafkaGroup", "testGroup");
+
 		jndi.bind("prop", prop);
 		return jndi;
 	}
@@ -93,12 +97,20 @@ public class BaseEmbeddedKafkaTest extends CamelTestSupport {
 		return context;
 	}
 
+	protected static String getZookeeperHost() {
+		return HOST;
+	}
+
 	protected static int getZookeeperPort() {
 		return zookeeperPort;
 	}
 
-	protected static int getKafkaPort() {
-		return kafkaPort;
+	protected static String getKafkaCluster() {
+		return kafkaCluster;
+	}
+
+	protected static String getKafkaTopic() {
+		return TOPIC;
 	}
 
 }

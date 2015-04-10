@@ -1,8 +1,19 @@
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
 		   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
 		   xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0
       http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+	<cm:property-placeholder persistent-id="zero.downtime.soa.hello">
+		<cm:default-properties>
+			<cm:property name="hello.kafkaCluster" value="localhost:9093,localhost:9094"/>
+			<cm:property name="hello.kafkaTopic" value="hello"/>
+			<cm:property name="hello.kafkaGroup" value="helloGroup"/>
+			<cm:property name="hello.zookeeperHost" value="localhost"/>
+			<cm:property name="hello.zookeeperPort" value="2181"/>
+		</cm:default-properties>
+	</cm:property-placeholder>
 
 	<bean id="helloServiceRoute" class="zero.downtime.soa.hello.HelloServiceRoute"/>
 
