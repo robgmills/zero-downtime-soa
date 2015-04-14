@@ -14,7 +14,7 @@ import java.net.ServerSocket;
  */
 public class HelloServiceApi extends RouteBuilder {
 
-	private static String KAFKA = "kafka:{{helloApi.kafkaCluster}}?topic={{helloApi.kafkaTopic}}&serializerClass={{helloApi.kafkaSerializer}}";
+	private static String KAFKA = "kafka:{{helloApi.kafkaCluster}}?topic={{helloApi.kafkaTopic}}&serializerClass={{helloApi.kafkaSerializer}}&requestRequiredAcks={{helloApi.kafkaReqAcks}}";
 
 	@Override public void configure() throws Exception {
 		//@formatter:off

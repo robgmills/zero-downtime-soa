@@ -10,6 +10,7 @@
 			<cm:property name="helloApi.kafkaCluster" value="localhost:9093,localhost:9094"/>
 			<cm:property name="helloApi.kafkaTopic" value="hello"/>
 			<cm:property name="helloApi.kafkaSerializer" value="kafka.serializer.StringEncoder" />
+			<cm:property name="helloApi.kafkaReqAcks" value="1" />
 		</cm:default-properties>
 	</cm:property-placeholder>
 
