@@ -1,9 +1,9 @@
 package zero.downtime.soa.api;
 
-import org.apache.camel.builder.RouteBuilder;
-
 import java.io.IOException;
 import java.net.ServerSocket;
+
+import org.apache.camel.builder.RouteBuilder;
 
 /**
  * Rest DSL using the jetty component to expose the Hello Service API
@@ -23,10 +23,11 @@ public class HelloServiceApi extends RouteBuilder {
 			.port(getRandomServerPort());
 
 		rest("/rest-api")
-			.get("/sync/{user}").to("direct-vm:hello")
+			.get("/sync/{user}")
+				.to("direct-vm:hello")
 			.get("/async/{user}").route().transform(header("user"))
-			.to(KAFKA)
-			.setBody(simple("Thanks ${header.user} your messages is being processed. \\n"));
+				.to(KAFKA)
+				.setBody(simple("Thanks ${header.user} your messages is being processed. \\n"));
 		//@formatter:on
 	}
 
