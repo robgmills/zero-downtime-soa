@@ -13,7 +13,9 @@ import org.apache.camel.builder.RouteBuilder;
  */
 public class HelloServiceRoute extends RouteBuilder {
 
-	static final String KAFKA = "kafka:{{hello.kafkaCluster}}?topic={{hello.kafkaTopic}}&groupId={{hello.kafkaGroup}}&zookeeperHost={{hello.zookeeperHost}}&zookeeperPort={{hello.zookeeperPort}}";
+	static final String KAFKA = "kafka:{{hello.kafkaCluster}}?topic={{hello.kafkaTopic}}"
+			+ "&groupId={{hello.kafkaGroup}}&zookeeperHost={{hello.zookeeperHost}}"
+			+ "&zookeeperPort={{hello.zookeeperPort}}";
 
 	@Override
 	public void configure() throws Exception {

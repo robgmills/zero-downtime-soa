@@ -1,9 +1,9 @@
 package zero.downtime.soa.api;
 
+import org.apache.camel.builder.RouteBuilder;
+
 import java.io.IOException;
 import java.net.ServerSocket;
-
-import org.apache.camel.builder.RouteBuilder;
 
 /**
  * Rest DSL using the jetty component to expose the Hello Service API
@@ -14,13 +14,14 @@ import org.apache.camel.builder.RouteBuilder;
  */
 public class HelloServiceApi extends RouteBuilder {
 
-	private static String KAFKA = "kafka:{{helloApi.kafkaCluster}}?topic={{helloApi.kafkaTopic}}&serializerClass={{helloApi.kafkaSerializer}}&requestRequiredAcks={{helloApi.kafkaReqAcks}}";
+	private static String KAFKA = "kafka:{{helloApi.kafkaCluster}}?topic={{helloApi.kafkaTopic}}&"
+			+ "serializerClass={{helloApi.kafkaSerializer}}&requestRequiredAcks={{helloApi.kafkaReqAcks}}";
 
 	@Override public void configure() throws Exception {
 		//@formatter:off
 		restConfiguration().component("jetty")
 			.host("localhost")
-			.port(getRandomServerPort());
+			.port("8080");
 
 		rest("/rest-api")
 			.get("/sync/{user}")
